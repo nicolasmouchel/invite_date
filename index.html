@@ -2,77 +2,92 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Festival Date Privé - 07/03</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap');
-        * { box-sizing: border-box; }
-        body {
-            margin: 0; padding: 20px 10px;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: white; min-height: 100vh; line-height: 1.5;
+        /* FIX SCROLL MOBILE */
+        html { -webkit-overflow-scrolling: touch; overscroll-behavior: none; height: 100%; }
+        body { 
+            margin: 0; padding: 25px 15px; min-height: 100vh; 
+            font-family: 'Poppins', sans-serif; line-height: 1.6;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 100%);
+            background-size: 300% 300%; animation: gradientShift 12s ease infinite;
+            color: white; overflow-x: hidden; /* JAMAIS overflow: hidden sur Y ! */
         }
         @keyframes gradientShift { 0%,100%{background-position:0%50%}50%{background-position:100%50%} }
+        
         .poster {
-            max-width: 100%; background: rgba(0,0,0,0.9);
-            border: 6px solid #fff; border-radius: 20px; padding: 40px 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7); text-align: center;
+            max-width: 100%; background: rgba(0,0,0,0.88);
+            border: 5px solid rgba(255,255,255,0.9); border-radius: 25px;
+            padding: 45px 30px; margin-bottom: 50px; /* ESPACE BAS pour scroll */
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6); text-align: center;
+            position: relative; /* PAS FIXED */
         }
         .poster::before {
-            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            width: 90%; height: calc(100% + 20px); background: linear-gradient(45deg, gold, hotpink);
-            border-radius: 25px; z-index: -1; animation: glow 3s infinite alternate;
-            filter: blur(10px);
+            content: ''; position: absolute; inset: -8px; left: 50%; transform: translateX(-50%);
+            width: calc(100% + 16px); height: calc(100% + 16px); background: radial-gradient(circle, gold, hotpink);
+            border-radius: 33px; z-index: -1; animation: glow 2.5s infinite alternate; opacity: 0.6;
         }
-        @keyframes glow { from{opacity:0.6} to{opacity:1} }
+        @keyframes glow { from{opacity:0.5; transform:translateX(-50%) scale(1);} to{opacity:0.8; transform:translateX(-50%) scale(1.02);} }
+        
         h1 { 
-            font-family: 'Bebas Neue', sans-serif; font-size: clamp(2em, 10vw, 4em);
-            margin: 0 0 15px; text-transform: uppercase; letter-spacing: 4px;
-            background: linear-gradient(45deg, #fff, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 0 #000;
+            font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2em, 12vw, 4.5em);
+            margin: 0 0 20px; text-transform: uppercase; letter-spacing: 5px;
+            background: linear-gradient(45deg, #fff 0%, #ffd700 70%); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            text-shadow: 3px 3px 0 #000;
         }
         .date { 
-            font-size: clamp(1.4em, 6vw, 2.2em); margin: 0 0 30px; 
-            color: #ffd700; font-weight: bold; text-shadow: 2px 2px 0 #000; padding: 10px 0;
-            background: rgba(255,255,255,0.2); border-radius: 15px; display: inline-block;
+            font-size: clamp(1.5em, 7vw, 2.5em); margin: 0 0 35px; padding: 15px 25px;
+            color: #ffd700; font-weight: bold; text-shadow: 2px 2px 0 #000;
+            background: rgba(255,255,255,0.25); border-radius: 20px; display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        
         .section {
-            margin-bottom: 35px; padding: 25px; background: rgba(255,255,255,0.12);
-            border-radius: 18px; border: 2px solid rgba(255,255,255,0.4); 
-            backdrop-filter: blur(12px); transition: transform 0.3s ease;
+            margin: 35px 0; padding: 30px 25px; background: rgba(255,255,255,0.15);
+            border-radius: 22px; border: 3px solid rgba(255,255,255,0.5); 
+            backdrop-filter: blur(15px); transition: all 0.3s ease;
+            touch-action: manipulation; /* FIX TOUCH MOBILE */
         }
-        .section:active { transform: scale(0.98); }
-        .section h3 { 
-            font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.3em, 5vw, 1.8em);
-            margin: 0 0 15px; color: #ffd700; text-shadow: 2px 2px 0 #000;
-        }
-        .section p { margin: 0 0 12px; font-size: clamp(1em, 3.5vw, 1.2em); }
+        .section:active { transform: translateY(2px); box-shadow: inset 0 3px 10px rgba(0,0,0,0.2); }
+        
         .icon { 
-            display: inline-block; width: 90px; height: 90px; margin: 15px auto;
-            border-radius: 15px; border: 4px solid #fff; font-size: clamp(2em, 8vw, 3.5em);
-            line-height: 1; display: flex; align-items: center; justify-content: center;
+            width: clamp(80px, 22vw, 110px); height: clamp(80px, 22vw, 110px); margin: 20px auto;
+            border-radius: 18px; border: 4px solid #fff; font-size: clamp(2.2em, 9vw, 4em);
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
-        .ceramique { background: linear-gradient(135deg, #D2691E, #8B4513); }
-        .jeux { background: linear-gradient(135deg, #1E90FF, #4169E1); }
+        .ceramique { background: linear-gradient(145deg, #D2691E, #CD853F); }
+        .jeux { background: linear-gradient(145deg, #1E90FF, #00BFFF); }
+        
+        .section h3 { 
+            font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4em, 6vw, 2.1em);
+            margin: 0 0 18px; color: #ffd700; text-shadow: 2px 2px 0 #000;
+        }
+        .section p { margin: 0 0 15px; font-size: clamp(1.1em, 4vw, 1.3em); }
+        
         .menu-grid {
-            display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px;
+            display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 25px; padding: 20px;
+            background: rgba(0,0,0,0.3); border-radius: 15px;
         }
+        @media (min-width: 480px) { .menu-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); } }
         .menu-item {
-            background: rgba(255,255,255,0.25); padding: 18px; border-radius: 12px;
-            font-weight: bold; font-size: clamp(1em, 3vw, 1.1em); border-left: 5px solid #ffd700;
+            background: rgba(255,255,255,0.3); padding: 20px 15px; border-radius: 15px;
+            font-weight: bold; font-size: clamp(1em, 3.5vw, 1.15em); text-align: center;
+            border: 2px solid rgba(255,215,0,0.5); box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        
         .invite {
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,215,0,0.2));
-            border: 4px double #ffd700; padding: 30px; border-radius: 20px;
-            font-size: clamp(1.2em, 4.5vw, 1.6em); font-weight: bold;
-            animation: pulse 2s infinite; margin-top: 30px;
+            margin: 45px 0 80px; padding: 35px 25px; background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,215,0,0.25));
+            border: 4px double #ffd700; border-radius: 25px; font-size: clamp(1.3em, 5vw, 1.8em);
+            font-weight: bold; animation: pulse 2s infinite; text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
-        @keyframes pulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.03)} }
-        .emoji-row { font-size: 2em; margin: 10px 0; }
-        @media (min-width: 500px) { .menu-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @keyframes pulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.02)} }
+        .emoji-row { font-size: clamp(1.8em, 7vw, 2.5em); margin: 15px 0; }
+        
+        /* ESPACE SCROLL FIN */
+        .spacer { height: 100px; }
     </style>
 </head>
 <body>
@@ -83,24 +98,25 @@
         <div class="section">
             <div class="icon ceramique">🎨🖌️</div>
             <h3>10h : Atelier Peinture Céramique</h3>
-            <p class="emoji-row">🥐☕🍊 Brunch gourmand inclus !</p>
+            <p class="emoji-row">🥐☕🍊 Brunch gourmand !</p>
         </div>
         
         <div class="section">
             <div class="icon jeux">🎲❤️</div>
             <h3>🌙 Soirée Jeux de Société</h3>
-            <p>Ambiance calme & cosy</p>
+            <p>Ambiance calme & détendue</p>
             <div class="menu-grid">
-                <div class="menu-item">🍲 Entrée : Chorba</div>
-                <div class="menu-item">🍆 Plat : Steak Aubergine Rôti<br>sauce Fromage Blanc Menthe</div>
-                <div class="menu-item">🍓 Dessert : Crumble Fruits Rouges</div>
+                <div class="menu-item">🍲<br>Entrée : Chorba</div>
+                <div class="menu-item">🍆<br>Steak Aubergine Rôti<br>+ Sauce Fromage Blanc Menthe</div>
+                <div class="menu-item">🍓<br>Crumble Fruits Rouges</div>
             </div>
         </div>
         
         <div class="invite">
-            Prête pour notre festival privé ? 💕<br>
-            <span style="font-size:1.2em;">RSVP : Swipe up pour Oui !</span>
+            Prête pour notre festival à deux ? 💕<br>
+            <span style="font-size:1.1em; display:block; margin-top:10px;">👆 Swipe pour confirmer !</span>
         </div>
     </div>
+    <div class="spacer"></div> <!-- FIX SCROLL BOTTOM -->
 </body>
 </html>
