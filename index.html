@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival Date Privé - Samedi 07/03</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+            overflow: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .poster {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(0,0,0,0.8);
+            border: 5px solid #fff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            border-radius: 30px;
+            z-index: -1;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #fff;
+            text-shadow: 3px 3px 0 #000;
+        }
+        .date {
+            font-size: 2em;
+            margin: 10px 0 30px;
+            color: #ffd700;
+        }
+        .program {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .event img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #fff;
+        }
+        .event h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8em;
+            margin: 0;
+            color: #ffd700;
+        }
+        .event p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+        }
+        .menu {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        .menu h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5em;
+            color: #ffeb3b;
+        }
+        .invite {
+            margin-top: 40px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .poster { padding: 20px; }
+            h1 { font-size: 2.5em; }
+            .event { flex-direction: column; text-align: center; }
+            .event img { width: 100px; height: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <h1>Festival Date Privé</h1>
+        <div class="date">Samedi 07/03</div>
+        
+        <div class="program">
+            <div class="event">
+                <img src="https://images.unsplash.com/photo-1585386906791-79d9db0ee199?w=400" alt="Atelier peinture céramique" loading="lazy">
+                <div>
+                    <h3>10h : Atelier Peinture sur Céramique</h3>
+                    <p>Avec brunch gourmand !</p>
+                </div>
+            </div>
+            
+            <div class="event">
+                <img src="https://images.unsplash.com/photo-1578864208457-468bab7d0e87?w=400" alt="Jeux de société soirée calme" loading="lazy">
+                <div>
+                    <h3>Soirée Calme : Jeux de Société</h3>
+                    <p>Avec un menu spécial préparé :</p>
+                    <div class="menu">
+                        <h4>Entrée : Chorba</h4>
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300" alt="Chorba soupe" style="width:80px;height:80px;margin:10px 0;border-radius:10px;" loading="lazy"><br>
+                        <h4>Plat : Steak Aubergine Rôti au Four</h4>
+                        <img src="https://images.unsplash.com/photo-1635996887821-98570914eb7b?w=300" alt="Steak aubergine rôti" style="width:80px;height:80px;margin:10px 0;border-radius:10px;" loading="lazy"><br>
+                        <h4>Dessert : Crumble Fruits Rouges</h4>
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300" alt="Crumble fruits rouges" style="width:80px;height:80px;margin:10px 0;border-radius:10px;" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="invite">
+            Prête pour ce festival rien que pour nous ? 💕
+        </div>
+    </div>
+</body>
+</html>
